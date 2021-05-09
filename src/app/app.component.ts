@@ -1,5 +1,7 @@
+import { MapType } from '@angular/compiler';
 import { Component } from '@angular/core';
 import { JsonService } from './json.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +9,7 @@ import { JsonService } from './json.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  
   title = 'pruebaAngular';
 
-  constructor(public json: JsonService){
-    this.json.getJson('http://localhost/pruebaProyecto/pruebaAngular/categorias').subscribe((res:any) => {
-      console.log(res);
-    });
-  }
 }

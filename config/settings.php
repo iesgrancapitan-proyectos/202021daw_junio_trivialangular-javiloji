@@ -35,7 +35,7 @@ $settings['error'] = [
 // Database settings
 $settings['db'] = [
     'driver' => 'mysql',
-    'host' => 'localhost',
+    'host' => '192.168.1.136',
     'username' => 'loji',
     'database' => 'proyecto_daw',
     'password' => 'romano',

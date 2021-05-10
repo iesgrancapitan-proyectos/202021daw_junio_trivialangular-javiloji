@@ -35,10 +35,10 @@ $settings['error'] = [
 // Database settings
 $settings['db'] = [
     'driver' => 'mysql',
-    'host' => '192.168.1.136',
-    'username' => 'loji',
+    'host' => 'localhost',
+    'username' => 'admin',
     'database' => 'proyecto_daw',
-    'password' => 'romano',
+    'password' => 'admin',
     'charset' => 'utf8mb4',
     'collation' => 'utf8mb4_unicode_ci',
     'flags' => [

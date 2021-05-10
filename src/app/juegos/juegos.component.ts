@@ -11,7 +11,7 @@ export class JuegosComponent implements OnInit {
   public array:any = [];
 
   constructor(private http: HttpClient) { 
-    this.http.get('http://192.168.1.136/pruebaProyecto/pruebaAngular/juegos').toPromise().then(data => {
+    this.http.get('http://localhost/proyectoDaw/juegos').toPromise().then(data => {
       console.log(data);
       
       this.array = data;

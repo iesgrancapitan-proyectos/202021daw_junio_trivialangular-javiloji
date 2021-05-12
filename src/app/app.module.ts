@@ -5,22 +5,23 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { JuegosComponent } from './juegos/juegos.component';
-import { TestComponent } from './test.component';
+import { SeleccionJugadoresComponent } from './seleccion-jugadores/seleccion-jugadores.component';
 
-// const appRoutes: Routes = [
-//   { path: '', Routes: RouterModule },
-// ];
+const rutas: Routes = [
+  { path: '', component: JuegosComponent },
+  { path: 'seleccion/:id', component: SeleccionJugadoresComponent },
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     JuegosComponent,
-    TestComponent
+    SeleccionJugadoresComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule
+    RouterModule.forRoot(rutas)
   ],
   providers: [],
   bootstrap: [AppComponent]

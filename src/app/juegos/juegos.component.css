@@ -1,0 +1,44 @@
+.juegos{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: whitesmoke;
+    padding: 30px 45px;
+}
+
+.juego{
+    flex-direction: column;
+    width: 21%;
+    min-height: 400px;
+    padding: 5px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.juego img{
+    min-width: 100%;
+    min-height: 350px;
+    margin: 0;
+
+}
+
+.juego h2{
+    margin: 0;
+    padding: 10px;
+    border-right: 1px black solid;
+    border-left: 1px black solid;
+    border-bottom: 1px black solid;
+    background-color: tomato;
+}
+
+.juego a{
+    text-decoration: none;
+    text-align: center;
+}
+
+
+.juego a button{
+    font-size: 20px;
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+}

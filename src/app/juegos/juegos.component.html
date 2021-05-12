@@ -1,10 +1,8 @@
 
-
-<h1 style="text-align: center;">Listado de Juegos</h1>
-<div style="display: inline-block; text-align: center;">
-    <div style="display: inline-block; text-align: center;" *ngFor="let lista of array"> 
+<div class="juegos">
+    <div class="juego" *ngFor="let lista of array"> 
         <img src="http://localhost/sabiogc/{{ lista.imagen }}" width="150" height="170"/>
         <h2>{{ lista.titulo }}</h2>
-        <button>Jugar</button>
+        <a [routerLink]="['/seleccion', lista.id]" style="cursor: pointer;"><button>Jugar</button></a>
     </div>
 </div>

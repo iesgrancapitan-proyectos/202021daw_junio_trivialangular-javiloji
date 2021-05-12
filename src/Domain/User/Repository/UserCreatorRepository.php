@@ -74,4 +74,28 @@ class UserCreatorRepository
         return $consulta->fetchAll();
 
     }
+
+    public function sacarPreguntas(){
+
+        $sql = 'SELECT * FROM preguntas';
+
+        // return $this->connection->prepare($sql)->execute()->fetchAll();
+
+        $consulta = $this->connection->prepare($sql);
+        $consulta->execute();
+        return $consulta->fetchAll();
+
+    }
+
+    public function sacarRespuestas(){
+
+        $sql = 'SELECT * FROM respuestas';
+
+        // return $this->connection->prepare($sql)->execute()->fetchAll();
+
+        $consulta = $this->connection->prepare($sql);
+        $consulta->execute();
+        return $consulta->fetchAll();
+
+    }
 }

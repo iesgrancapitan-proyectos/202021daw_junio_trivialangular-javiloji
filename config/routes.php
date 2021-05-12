@@ -16,5 +16,7 @@ return function (App $app) {
 
     $app->get('/categorias', \App\Action\BajarDatos::class);
     $app->get('/juegos', \App\Action\SacarJuegos::class);
+    $app->get('/preguntas', \App\Action\SacarPreguntas::class);
+    $app->get('/respuestas', \App\Action\SacarRespuestas::class);
 
 };

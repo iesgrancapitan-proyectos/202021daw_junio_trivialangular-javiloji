@@ -18,5 +18,6 @@ return function (App $app) {
     $app->get('/juegos', \App\Action\SacarJuegos::class);
     $app->get('/preguntas', \App\Action\SacarPreguntas::class);
     $app->get('/respuestas', \App\Action\SacarRespuestas::class);
+    $app->get('/familiaCategoria', \App\Action\SacarFamiliaCategoria::class);
 
 };

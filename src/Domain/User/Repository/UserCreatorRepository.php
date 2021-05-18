@@ -98,4 +98,16 @@ class UserCreatorRepository
         return $consulta->fetchAll();
 
     }
+
+    public function sacarFamiliasCategorias(){
+
+        $sql = 'SELECT * FROM familiacateg';
+
+        // return $this->connection->prepare($sql)->execute()->fetchAll();
+
+        $consulta = $this->connection->prepare($sql);
+        $consulta->execute();
+        return $consulta->fetchAll();
+
+    }
 }

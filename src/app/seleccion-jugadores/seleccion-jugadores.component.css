@@ -1,0 +1,23 @@
+#titulo{
+    text-align: center;
+    font-size: 26px;
+
+}
+
+#botonContainer{
+    text-align: center;
+}
+
+#botonEmpezar{
+    text-decoration: none;
+    margin: auto;
+}
+
+
+#botonEmpezar button{
+    font-size: 20px;
+    width: 20%;
+    padding: 10px;
+    cursor: pointer;
+    margin: 20px;
+}

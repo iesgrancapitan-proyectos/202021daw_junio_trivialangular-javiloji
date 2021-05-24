@@ -1,5 +1,10 @@
-<p>seleccion-jugadores works!</p>
-
-<div *ngFor="let pregunta of preguntas"> 
-    <p>{{pregunta.pregunta}}</p>
+        
+        
+<div id="titulo">
+    <h2>{{tituloJuego}}</h2>
+    <h3>Elección de jugadores</h3>
+    <!-- {{arrayJuegos.id}} -->
+</div>
+<div id="botonContainer">
+    <a id="botonEmpezar" [routerLink]="['/juego', idJuego]" style="cursor: pointer;"><button>Empezar Juego</button></a>
 </div>

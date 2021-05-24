@@ -12,13 +12,16 @@ export class JuegosComponent implements OnInit {
 
   constructor(private http: HttpClient) { 
     this.http.get('http://localhost/proyectoDaw/juegos').toPromise().then(data => {
-      console.log(data);
       
       this.array = data;
 
+      console.log(this.array);
+
+      // console.log(localStorage.getItem('arrayJuegos'));
     });
   }
 
   ngOnInit(): void {
+    // let arrayJuegos = this.array;
   }
 }

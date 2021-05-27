@@ -1,4 +1,31 @@
-
+<!-- 
 <div *ngFor="let pregunta of preguntas"> 
     <p>{{pregunta.pregunta}}</p>
-</div>
+</div> -->
+
+
+
+<!-- Form que muestra el Quiz -->
+<form class="inactive" *ngIf="!quizCompleted">
+    <p>{{ preguntas[indexQuiz].pregunta }}</p>
+    <br />
+    <div class="containerRespuestas">
+        <button (click)="elegirRespuesta(respuesta, respuestaUnica)" mat-raised-button
+            *ngFor="let respuesta of respuestaUnica; index as i" class="opcion"
+            [ngClass]="{'correctAnswer': respuesta.respuesta == respuestaValidaNombre, 'wrongAnswer': respuestaValidaNombre != ''&& respuesta.respuesta == respuestaClicada && respuesta.respuesta != respuestaValidaNombre}"
+            id="opcion{{i+1}}" value="{{ respuesta.valida }}" [disabled]="respuestaClicada != ''">
+            {{respuesta.respuesta}}</button>
+    </div>
+    <button (click)="avanzar()" mat-fab type="submit" id="buttonNext" class="buttonNext"
+        [ngClass]="{'buttonNextBlock': respuestaClicada != ''}">
+        
+    </button>
+</form>
+
+
+
+
+<!-- Div que se muestra cuando acaba el Quiz -->
+<!-- <div *ngIf="quizCompleted">
+    <h2>Quiz completado. Has acertado {{aciertos}} respuestas correctas.</h2>
+</div> -->

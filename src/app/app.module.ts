@@ -10,6 +10,9 @@ import { PreguntasComponent } from './preguntas/preguntas.component';
 
 import { PruebaService } from './prueba.service';
 
+
+// import { MatIcon, MatIconModule } from '@angular/material/icon';
+
 const rutas: Routes = [
   { path: '', component: JuegosComponent },
   { path: 'seleccion/:id', component: SeleccionJugadoresComponent },

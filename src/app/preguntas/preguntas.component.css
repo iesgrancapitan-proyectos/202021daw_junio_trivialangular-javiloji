@@ -1,0 +1,74 @@
+
+
+/* Banderas */
+
+.inactive {
+    *display: none;
+}
+
+form {
+    margin: 0 20% 10% 20%;
+}
+
+form p {
+    text-align: center;
+}
+
+.containerRespuestas {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 200px);
+    *justify-items: center;
+    *align-items: center;
+    margin-bottom: 2%;
+}
+
+.mat-raised-button {
+    font-size: 16px;
+}
+
+.mat-raised-button:hover {
+    background-color: lightgray;
+    font-size: 24px;
+}
+
+.buttonNext {
+    float: right;
+    background-color: lightsalmon;
+    display: none;
+}
+
+.buttonNextBlock {
+    display: block !important;
+}
+
+.correctAnswer {
+    background-color: lightgreen;
+}
+.correctAnswer:hover {
+    background-color: green;
+}
+
+.wrongAnswer {
+    background-color: lightcoral;
+}
+.wrongAnswer:hover {
+    background-color: red;
+}
+
+.disabled-button {
+    pointer-events: none;
+    background-color: lightgray !important;
+}
+
+.mat-raised-button.mat-button-disabled.mat-button-disabled.wrongAnswer {
+    background-color: lightcoral !important;
+    
+}
+.mat-raised-button.mat-button-disabled.mat-button-disabled.correctAnswer {
+    background-color: lightgreen !important;
+}
+.mat-raised-button.mat-button-disabled.mat-button-disabled {
+    color: #000 !important;
+}

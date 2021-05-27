@@ -10,7 +10,7 @@ import { PruebaService } from './../prueba.service';
   templateUrl: './seleccion-jugadores.component.html',
   styleUrls: ['./seleccion-jugadores.component.css']
 })
-export class SeleccionJugadoresComponent implements OnInit {
+export class SeleccionJugadoresComponent  {
 
   public idJuego:any = "";
   public arrayJuegos = "";
@@ -26,7 +26,7 @@ export class SeleccionJugadoresComponent implements OnInit {
       
     }
 
-    // this.idJuego = this.route.snapshot.paramMap.get("id");
+    this.idJuego = this.route.snapshot.paramMap.get("id");
   }
   ngOnInit(): void {
 

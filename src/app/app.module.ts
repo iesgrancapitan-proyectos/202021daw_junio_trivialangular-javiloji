@@ -9,7 +9,10 @@ import { SeleccionJugadoresComponent } from './seleccion-jugadores/seleccion-jug
 import { PreguntasComponent } from './preguntas/preguntas.component';
 
 import { PruebaService } from './prueba.service';
+import {FormsModule} from '@angular/forms';
 
+// import { MatInputModule } from '@angular/material/input';
+// import { MatButtonModule } from '@angular/material/button';
 
 // import { MatIcon, MatIconModule } from '@angular/material/icon';
 
@@ -29,9 +32,10 @@ const rutas: Routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(rutas)
+    RouterModule.forRoot(rutas),
+    FormsModule
   ],
-  providers: [PruebaService],
+  providers: [PruebaService,SeleccionJugadoresComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

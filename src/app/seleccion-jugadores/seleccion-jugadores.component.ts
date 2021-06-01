@@ -15,6 +15,7 @@ export class SeleccionJugadoresComponent  {
   public idJuego:any = "";
   public arrayJuegos = "";
   public tituloJuego;
+  public numeroJugadores: any = "";
 
   constructor(private route: ActivatedRoute, public pruebaService: PruebaService) { 
 
@@ -27,7 +28,17 @@ export class SeleccionJugadoresComponent  {
     }
 
     this.idJuego = this.route.snapshot.paramMap.get("id");
+
+    console.log(this.numeroJugadores.name);
   }
+
+  hola():void{
+    console.log("hola");
+  }
+
+  // onSubmit(event: any) {
+  //   return event.target.numeroJugadores.value;
+  // }
   ngOnInit(): void {
 
   }

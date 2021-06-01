@@ -8,12 +8,16 @@ export class PruebaService {
 
   public arrayJuegos:any = [];
   public accesoFacturacion = "";
+  public textoDeInput: any = null;
   
   constructor(private http:HttpClient) { 
     
     this.http.get('http://localhost/proyectoDaw/juegos').toPromise().then(data => {
       
       this.arrayJuegos = data;
+
+      
     })
   }
+  
 }

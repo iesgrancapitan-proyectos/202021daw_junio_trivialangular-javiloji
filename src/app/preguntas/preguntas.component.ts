@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef, AfterViewInit, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { SeleccionJugadoresComponent } from './../seleccion-jugadores/seleccion-jugadores.component';
 
 @Component({
   selector: 'app-preguntas',
@@ -22,11 +23,13 @@ export class PreguntasComponent implements OnInit, AfterViewInit {
   respuestaValidaNombre = "";
   respuestaClicada = "";
   quizCompleted = false;
+  ache = "";
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) {
+  constructor(private route: ActivatedRoute, private http: HttpClient, private seleccion:SeleccionJugadoresComponent) {
 
-    
-    
+    console.log(seleccion.numeroJugadores);
+    // console.log(seleccion.numeroJugadores.value);
+    this.ache = seleccion.numeroJugadores;
 
     /* this.http.get('http://localhost/proyectoDaw/familiaCategoria').subscribe(categorias => {
  

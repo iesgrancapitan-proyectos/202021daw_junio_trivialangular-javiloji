@@ -1,5 +1,5 @@
-<!-- 
-<div *ngFor="let pregunta of preguntas"> 
+
+<!-- <div *ngFor="let pregunta of preguntas"> 
     <p>{{pregunta.pregunta}}</p>
 </div> -->
 
@@ -18,8 +18,9 @@
     </div>
     <button (click)="avanzar()" mat-fab type="submit" id="buttonNext" class="buttonNext"
         [ngClass]="{'buttonNextBlock': respuestaClicada != ''}">
-        
+        Siguiente Pregunta
     </button>
+    <p>{{indexQuiz}}</p>
 </form>
 
 

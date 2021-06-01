@@ -118,20 +118,20 @@ export class PreguntasComponent implements OnInit, AfterViewInit  {
       this.quizCompleted = true;
     }
 
-    console.log(this.preguntas[this.indexQuiz]);
-
     // console.log(this.preguntas[this.indexQuiz]["id"]);
 
     // console.log(this.respuestas[0]);
+    console.log("hola");
+
+    console.log(this.preguntas[this.indexQuiz]["id"]);
 
     for (let i = 0; i < this.respuestas.length; i++) {
-      
       if(this.respuestas[i]["idPregunta"]==this.preguntas[this.indexQuiz]["id"]){
+        console.log(this.respuestas[i]["idPregunta"]);
 
         this.respuestaUnica.push(this.respuestas[i]);
 
       }
-      
     }
 
     // console.log(this.respuestas[0]);
@@ -142,14 +142,14 @@ export class PreguntasComponent implements OnInit, AfterViewInit  {
     // console.log(respuesta, arrayRespuestas);
     let that = this;
     this.respuestaClicada = respuesta.respuesta;
-
+    // console.log(respuesta.respuesta);
     if (respuesta.valida) {
       this.aciertos++;
     }
     console.log(respuesta);
 
     this.respuestaUnica.forEach((element: any) => {
-      if (element.valida) {
+      if (element.valida == 1) {
         that.respuestaValidaNombre = element.respuesta;
         console.log(that.respuestaValidaNombre);
       }

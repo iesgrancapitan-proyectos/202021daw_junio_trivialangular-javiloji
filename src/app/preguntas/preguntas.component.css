@@ -41,6 +41,9 @@ form p {
 
 .buttonNextBlock {
     display: block !important;
+    padding: 30px;
+    width: 20%;
+    font-size: 24px;
 }
 
 .correctAnswer {

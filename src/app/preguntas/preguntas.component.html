@@ -6,8 +6,8 @@
 
 
 <!-- Form que muestra el Quiz -->
-<form class="inactive" *ngIf="!quizCompleted">
-    <p>{{ preguntas[indexQuiz].pregunta }}</p>
+<div class="inactive" *ngIf="!quizCompleted">
+    <p *ngIf="preguntas[indexQuiz]">{{ preguntas[indexQuiz].pregunta }}</p>
     <br />
     <div class="containerRespuestas">
         <button (click)="elegirRespuesta(respuesta, respuestaUnica)" mat-raised-button
@@ -16,12 +16,18 @@
             id="opcion{{i+1}}" value="{{ respuesta.valida }}" [disabled]="respuestaClicada != ''">
             {{respuesta.respuesta}}</button>
     </div>
-    <button (click)="avanzar()" mat-fab type="submit" id="buttonNext" class="buttonNext"
-        [ngClass]="{'buttonNextBlock': respuestaClicada != ''}">
-        Siguiente Pregunta
-    </button>
-    <p>{{indexQuiz}}</p>
-</form>
+    <div class="containerButtonNext">
+        <button (click)="avanzar()" mat-fab id="buttonNext" class="buttonNext"
+            [ngClass]="{'buttonNextBlock': respuestaClicada != ''}">
+            <span class="material-icons">
+                arrow_forward_ios
+                </span>
+        </button>
+    </div>
+
+    Aciertos: {{aciertos}}
+    
+</div>
 
 
 

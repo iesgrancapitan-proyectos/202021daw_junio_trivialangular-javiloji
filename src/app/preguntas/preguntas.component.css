@@ -6,11 +6,11 @@
     *display: none;
 }
 
-form {
+div {
     margin: 0 20% 10% 20%;
 }
 
-form p {
+div p {
     text-align: center;
 }
 
@@ -18,7 +18,7 @@ form p {
     display: grid;
     grid-gap: 20px;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 200px);
+    grid-template-rows: repeat(2, 125px);
     *justify-items: center;
     *align-items: center;
     margin-bottom: 2%;
@@ -37,6 +37,7 @@ form p {
     float: right;
     background-color: lightsalmon;
     display: none;
+    border-radius: 50%;
 }
 
 .buttonNextBlock {

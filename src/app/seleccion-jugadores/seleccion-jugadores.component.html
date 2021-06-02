@@ -1,9 +1,6 @@
-        
-        
 <div id="titulo">
     <h2>{{tituloJuego}}</h2>
-    <h3>Elección de jugadores</h3>
-    <!-- {{arrayJuegos.id}} -->
+    <h4>Elección de jugadores</h4>
 </div>
 <!-- <input [(ngModel)]='numeroJugadores' 
 type="text" 
@@ -11,9 +8,29 @@ class="form-control"
 placeholder="" 
 aria-label="" 
 aria-describedby="basic-addon1"> -->
+<!-- <input type="text" name="numeroJugadores" value="Name"> -->
 
-    <input type="text" name="numeroJugadores" value="Name">
-    
+<div class="containerElectionPlayers">
+    <div>
+        <label for="players">Número de jugadores</label>
+        <div>
+            <select [(ngModel)]="selectedOption" (change)="calcularJugadores()" name="players" id="players">
+                <option selected value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+        </div>
+        <div *ngIf="selectedOption">
+            <div *ngFor="let item of numeroJugadores; index as i" class="inputPlayerContainer">
+                <label for="player{{item}}">Nombre de jugador {{item}}: </label>
+                <input type="text" id="player{{item}}" name="player{{item}}">
+                <img class="iconito" src="../../assets/img/iconitos/{{asignarIconito()}}">
+            </div>
+        </div>
+
+    </div>
+</div>
+
 <div id="botonContainer">
     <a id="botonEmpezar" [routerLink]="['/juego', idJuego]" style="cursor: pointer;"><button>Empezar Juego</button></a>
 </div>

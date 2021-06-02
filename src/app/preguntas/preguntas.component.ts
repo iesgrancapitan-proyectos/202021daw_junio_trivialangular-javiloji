@@ -23,13 +23,13 @@ export class PreguntasComponent implements OnInit, AfterViewInit {
   respuestaValidaNombre = "";
   respuestaClicada = "";
   quizCompleted = false;
-  ache = "";
+  // ache = "";
 
   constructor(private route: ActivatedRoute, private http: HttpClient, private seleccion:SeleccionJugadoresComponent) {
 
     console.log(seleccion.numeroJugadores);
     // console.log(seleccion.numeroJugadores.value);
-    this.ache = seleccion.numeroJugadores;
+    // this.ache = seleccion.numeroJugadores;
 
     /* this.http.get('http://localhost/proyectoDaw/familiaCategoria').subscribe(categorias => {
  

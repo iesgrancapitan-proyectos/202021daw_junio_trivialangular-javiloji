@@ -21,3 +21,25 @@
     cursor: pointer;
     margin: 20px;
 }
+
+.containerElectionPlayers {
+    margin: 5% 30%;
+}
+
+.containerElectionPlayers div {
+    text-align: center;
+}
+
+.containerElectionPlayers select {
+    text-align: center;
+}
+
+.inputPlayerContainer {
+    margin: 15px 0;
+}
+
+.iconito {
+    width: 30px;
+    vertical-align: middle;
+    margin: 5px;
+}

@@ -6,18 +6,21 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PruebaService {
 
-  public arrayJuegos:any = [];
+  public arrayJuegos: any = [];
   public accesoFacturacion = "";
   public textoDeInput: any = null;
-  
-  constructor(private http:HttpClient) { 
-    
-    this.http.get('http://localhost/proyectoDaw/juegos').toPromise().then(data => {
-      
-      this.arrayJuegos = data;
 
-      
+  public numeroJugadores: any = [];
+
+  constructor(private http: HttpClient) {
+    this.getJuegos();
+  }
+
+  getJuegos() {
+    this.http.get('http://localhost/proyectoDaw/juegos').subscribe(data => {
+
+      this.arrayJuegos = data;
     })
   }
-  
+
 }

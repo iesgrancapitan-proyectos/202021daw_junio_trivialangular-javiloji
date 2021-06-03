@@ -2,6 +2,7 @@ import { Component, ViewChild, ElementRef, AfterViewInit, OnInit } from '@angula
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { SeleccionJugadoresComponent } from './../seleccion-jugadores/seleccion-jugadores.component';
+import { PruebaService } from '../prueba.service';
 
 @Component({
   selector: 'app-preguntas',
@@ -25,9 +26,9 @@ export class PreguntasComponent implements OnInit, AfterViewInit {
   quizCompleted = false;
   // ache = "";
 
-  constructor(private route: ActivatedRoute, private http: HttpClient, private seleccion:SeleccionJugadoresComponent) {
+  constructor(private route: ActivatedRoute, private http: HttpClient, private seleccion:SeleccionJugadoresComponent, private pruebaService:PruebaService) {
 
-    console.log(seleccion.numeroJugadores);
+    console.log(pruebaService.numeroJugadores);
     // console.log(seleccion.numeroJugadores.value);
     // this.ache = seleccion.numeroJugadores;
 
@@ -219,8 +220,6 @@ export class PreguntasComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.getCategorias();
-    
-    
   }
 
 }

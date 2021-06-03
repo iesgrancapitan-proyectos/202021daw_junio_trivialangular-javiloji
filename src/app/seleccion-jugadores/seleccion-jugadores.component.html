@@ -14,17 +14,17 @@ aria-describedby="basic-addon1"> -->
     <div>
         <label for="players">Número de jugadores</label>
         <div>
-            <select [(ngModel)]="selectedOption" (change)="calcularJugadores()" name="players" id="players">
-                <option selected value="2">2</option>
+            <select [(ngModel)]="selectedOption" (change)="generarJugadores()" name="players" id="players">
+                <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
             </select>
         </div>
         <div *ngIf="selectedOption">
-            <div *ngFor="let item of numeroJugadores; index as i" class="inputPlayerContainer">
-                <label for="player{{item}}">Nombre de jugador {{item}}: </label>
-                <input type="text" id="player{{item}}" name="player{{item}}">
-                <img class="iconito" src="../../assets/img/iconitos/{{asignarIconito()}}">
+            <div *ngFor="let player of pruebaService.numeroJugadores; index as i" class="inputPlayerContainer">
+                <label for="player{{player.numJugador}}">Nombre de jugador {{player.numJugador}}: </label>
+                <input type="text" id="player{{player.numJugador}}" [(ngModel)]="player.nombreJugador">
+                <img class="iconito" src="{{player.iconoJugador}}">
             </div>
         </div>
 
@@ -32,5 +32,6 @@ aria-describedby="basic-addon1"> -->
 </div>
 
 <div id="botonContainer">
-    <a id="botonEmpezar" [routerLink]="['/juego', idJuego]" style="cursor: pointer;"><button>Empezar Juego</button></a>
+    <a (click)="checkName()" id="botonEmpezar" style="cursor: pointer;"><button [ngClass]="{'error': showError}">Empezar Juego</button></a>
+    <!-- [routerLink]="['/juego', idJuego]" -->
 </div>

@@ -14,20 +14,38 @@ div {
 
 div p {
     text-align: center;
+    font-size: 20px;
 }
 
 .divPrincipal{
     display: flex;
     flex-direction: row;
+    text-align: center;
+    padding: 30px;
 }
 
 .divJugadores{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    width: 40%;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.divJugadores>div:first-child {
+    width: 100%;
+    border-bottom: 3px solid rgba(0,0,0,0.4);
+
 }
 
 .divJugadores>div{
-    padding: 50px;
+    padding: 30px;
+    width: 40%;
+    margin: 15px auto;
+    border: 1px solid rgba(0,0,0,0.4);
+}
+
+.nombreJugador{
+    font-weight: 700;
 }
 
 .divPreguntas{
@@ -38,14 +56,27 @@ div p {
     margin: auto;
 }
 
+.divPreguntas > p{
+    width: 500px;
+    margin: auto;
+    font-weight: 600;
+    font-size: 28px;
+    padding: 10px;
+}
+
 .containerRespuestas {
     display: grid;
     grid-gap: 20px;
+    width: 700px;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 125px);
     *justify-items: center;
     *align-items: center;
     margin-bottom: 2%;
+}
+
+.containerRespuestas > button{
+    font-size: 22px;
 }
 
 .iconito {
@@ -68,13 +99,13 @@ div p {
     float: right;
     background-color: lightsalmon;
     display: none;
-    border-radius: 50%;
+    border-radius: 5%;
 }
 
 .buttonNextBlock {
     display: block !important;
-    padding: 30px;
-    width: 20%;
+    padding: 10px 30px;
+    width: 30%;
     font-size: 24px;
 }
 
@@ -95,6 +126,39 @@ div p {
 .disabled-button {
     pointer-events: none;
     background-color: lightgray !important;
+}
+
+.divFinal{
+    text-align: center;
+
+}
+
+.tituloPuntuacion{
+    text-align: center;
+    width: 40%;
+    font-size: 40px;
+    margin: auto;
+    padding: 30px 0px;
+    border-bottom: 3px solid rgba(0,0,0,0.4);
+}
+
+.jugadorFinal{
+    width: 40%;
+    margin: auto;
+    border: 1px solid rgba(0,0,0,0.4);
+    margin-top: 50px;
+
+}
+
+.volverAJugar{
+    text-align: center;    
+}
+
+.volverAJugar > a > button{
+    width: 200px;
+    padding: 10px;
+    background-color: antiquewhite;
+    margin: 20px;
 }
 
 .mat-raised-button.mat-button-disabled.mat-button-disabled.wrongAnswer {

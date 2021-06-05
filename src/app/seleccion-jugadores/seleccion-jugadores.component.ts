@@ -17,6 +17,7 @@ export class SeleccionJugadoresComponent {
   public tituloJuego;
   // public numeroJugadores: any = "";
   public selectedOption: any = 2;
+  public numeroRondas: any = 2;
 
   iconitos: any = ["cactus.png", "cerdito.png", "hamburguesa.png", "helado.png", "monstruo.png", "pizza.png", "robot.png", "vikingo.png"];
   showError = false;
@@ -72,13 +73,22 @@ export class SeleccionJugadoresComponent {
         puntosJugador: 0,
         turno: false
       });
+
     }
   }
 
+  asignarRondas(){
+    this.pruebaService.numeroRondas = this.numeroRondas;
+  }
+
   asignarIconito() {
-    let random = Math.floor(Math.random() * this.iconitos.length);
+    let iconos = this.iconitos;
+    let random = Math.floor(Math.random() * iconos.length);
     // console.log(random);
-    let iconitoAsignado = this.iconitos[random];
+    let iconitoAsignado = iconos[random];
+
+    iconos = this.iconitos.splice(random,1);
+
     // console.log("array", this.iconitos);
     // let iconoBorrado = this.iconitos.splice(random, 1);
     // console.error("he borrado ", iconoBorrado);

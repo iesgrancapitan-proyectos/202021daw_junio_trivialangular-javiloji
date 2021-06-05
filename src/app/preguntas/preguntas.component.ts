@@ -19,6 +19,8 @@ export class PreguntasComponent implements OnInit, AfterViewInit {
   public respuestaUnica: any = [];
 
   public arrayJugadores: any = [];
+  public numeroRondas: any = 2;
+
 
   indexQuiz = 0;
   aciertos = 0;
@@ -30,6 +32,7 @@ export class PreguntasComponent implements OnInit, AfterViewInit {
   constructor(private route: ActivatedRoute, private http: HttpClient, private seleccion:SeleccionJugadoresComponent, private pruebaService:PruebaService) {
 
     this.arrayJugadores= pruebaService.numeroJugadores;
+    this.numeroRondas= pruebaService.numeroRondas;
     console.log(this.arrayJugadores);
     console.log(pruebaService.numeroJugadores);
     // console.log(seleccion.numeroJugadores.value);
@@ -90,10 +93,11 @@ export class PreguntasComponent implements OnInit, AfterViewInit {
     this.respuestaClicada = "";
     if (this.preguntas.length - 1 > this.indexQuiz) {
       this.indexQuiz++;
-    } else {
+    } 
+    
+    // else {
      
-      this.quizCompleted = true;
-    }
+    // }
     this.respuestaUnica = [];
     this.calcularSiguientePregunta();
     console.log(this.arrayJugadores);
@@ -113,11 +117,18 @@ export class PreguntasComponent implements OnInit, AfterViewInit {
 
         if (arrayJugadores[i].turno == true) {
           arrayJugadores[i].puntosJugador +=1;
-          
+        }
+
+        if(this.arrayJugadores[i].puntosJugador == this.numeroRondas){
+          this.quizCompleted = true;
+  
         }
     
       }
     }
+
+    
+
     arrayRespuestas.forEach((element: any) => {
       if (element.valida == 1) {
         that.respuestaValidaNombre = element.respuesta;

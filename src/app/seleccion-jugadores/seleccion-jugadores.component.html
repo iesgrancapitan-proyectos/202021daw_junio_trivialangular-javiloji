@@ -20,6 +20,15 @@ aria-describedby="basic-addon1"> -->
                 <option value="4">4</option>
             </select>
         </div>
+        <label for="players">Número de Rondas</label>
+        <div>
+            <select [(ngModel)]="numeroRondas" (change)="asignarRondas()" name="rondas" id="rondas">
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
         <div *ngIf="selectedOption">
             <div *ngFor="let player of pruebaService.numeroJugadores; index as i" class="inputPlayerContainer">
                 <label for="player{{player.numJugador}}">Nombre de jugador {{player.numJugador}}: </label>

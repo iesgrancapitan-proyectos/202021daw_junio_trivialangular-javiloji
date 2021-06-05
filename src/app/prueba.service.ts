@@ -11,6 +11,7 @@ export class PruebaService {
   public textoDeInput: any = null;
 
   public numeroJugadores: any = [];
+  public numeroRondas: any = 2;
 
   constructor(private http: HttpClient) {
     this.getJuegos();

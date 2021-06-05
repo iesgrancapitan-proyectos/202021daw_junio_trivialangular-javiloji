@@ -8,8 +8,12 @@
 <!-- Form que muestra el Quiz -->
 <div class="inactive" *ngIf="!quizCompleted" ngClass="divPrincipal">
     <div class="divJugadores">
+        <div>
+            <p>Puntuacion a alcanzar: {{numeroRondas}}</p>
+        </div>
         <div *ngFor="let jugador of arrayJugadores; index as i" [ngClass]="{'correctAnswer': jugador.turno == true}">
-            <p>Nombre Jugador: {{jugador.nombreJugador}}</p>
+            <p>Jugador {{jugador.numJugador}}</p>
+            <p class="nombreJugador">{{jugador.nombreJugador}}</p>
             <p>Puntuación: {{jugador.puntosJugador}}</p>
             <img class="iconito" src="{{jugador.iconoJugador}}">
         </div>
@@ -26,7 +30,7 @@
         </div>
         <div class="containerButtonNext">
             <button (click)="avanzar()" mat-fab id="buttonNext" class="buttonNext"
-                [ngClass]="{'buttonNextBlock': respuestaClicada != ''}">
+                [ngClass]="{'buttonNextBlock': respuestaClicada != ''}">Avanzar
                 <span class="material-icons">
                     arrow_forward_ios
                     </span>
@@ -41,7 +45,15 @@
 
 
 
-<!-- Div que se muestra cuando acaba el Quiz -->
-<!-- <div *ngIf="quizCompleted">
-    <h2>Quiz completado. Has acertado {{aciertos}} respuestas correctas.</h2>
-</div> -->
+<!-- Div que se muestra cuando acaba el Quiz --> 
+<div *ngIf="quizCompleted" class="divFinal">
+    <h2 class="tituloPuntuacion">Puntuación Final: </h2>
+    <div class="jugadorFinal" *ngFor="let jugador of arrayJugadores; index as i" [ngClass]="{'correctAnswer': jugador.turno == true}">
+        <p>Nombre Jugador: {{jugador.nombreJugador}}</p>
+        <p>Puntuación: {{jugador.puntosJugador}}</p>
+        <img class="iconito" src="{{jugador.iconoJugador}}">
+    </div>
+    <div class="volverAJugar" >
+        <a [routerLink]="['/']" style="cursor: pointer;"><button >Volver a jugar</button></a>
+    </div>
+</div>

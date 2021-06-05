@@ -19,7 +19,8 @@
         </div>
     </div>
     <div class="divPreguntas">
-        <p *ngIf="preguntas[indexQuiz]">{{ preguntas[indexQuiz].pregunta }}</p>
+        <p *ngIf="preguntas[0]">{{ preguntas[0].categoria }}</p>
+        <p *ngIf="preguntas[0]">{{ preguntas[0].pregunta }}</p>
         <br />
         <div class="containerRespuestas">
             <button (click)="elegirRespuesta(respuesta, respuestaUnica,arrayJugadores)" mat-raised-button
@@ -36,8 +37,6 @@
                     </span>
             </button>
         </div>
-    Aciertos: {{aciertos}}
-
     </div>
     <!-- {{ache}} -->
 </div>

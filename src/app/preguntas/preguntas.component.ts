@@ -80,7 +80,7 @@ export class PreguntasComponent implements OnInit, AfterViewInit {
 
   calcularSiguientePregunta(){
       for (let i = 0; i < this.respuestas.length; i++) {
-        if (this.respuestas[i]["idPregunta"] == this.preguntas[this.indexQuiz]["id"]) {
+        if (this.respuestas[i]["idPregunta"] == this.preguntas[0]["id"]) {
           this.respuestaUnica.push(this.respuestas[i]);
         }
       }
@@ -89,12 +89,21 @@ export class PreguntasComponent implements OnInit, AfterViewInit {
 
 
   avanzar() {
+    let array = this.preguntas;
+
     this.respuestaValidaNombre = "";
     this.respuestaClicada = "";
-    if (this.preguntas.length - 1 > this.indexQuiz) {
-      this.indexQuiz++;
-    } 
+    // if (array.length - 1 > this.indexQuiz) {
+    //   this.indexQuiz++;
+    // } 
+    // if(this.indexQuiz >= array.length){
+    //   this.indexQuiz= 0;
+    // }
+    array = this.preguntas.splice(0,1);
     
+    console.log(this.preguntas);
+
+
     // else {
      
     // }
@@ -136,8 +145,8 @@ export class PreguntasComponent implements OnInit, AfterViewInit {
         
       }
     });
-
   }
+
   getRespuestas() {
     
 
@@ -152,16 +161,6 @@ export class PreguntasComponent implements OnInit, AfterViewInit {
   getPreguntas() {
     let that = this;
     this.http.get('http://localhost/proyectoDaw/preguntas').subscribe( ( data : any) => {
-      /*for (j = 0; j < this.arrayCategorias.length; j++) {
-        for (i = 0; i < data.length; i++) {
-          if (data[i]['categoria'] == this.arrayCategorias[j]) {
-            console.log(data[i]['categoria']);
-            that.preguntas.push(data[i]);
-          }
-
-        }
-
-      }*/
       
       for (let i = 0; i < data.length; i++) {
         if(that.arrayCategorias.includes(data[i].categoria)){

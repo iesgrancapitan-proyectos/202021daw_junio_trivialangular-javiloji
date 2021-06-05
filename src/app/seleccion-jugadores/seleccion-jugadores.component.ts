@@ -69,7 +69,8 @@ export class SeleccionJugadoresComponent {
         numJugador: i,
         nombreJugador: "",
         iconoJugador: `../../assets/img/iconitos/${this.asignarIconito()}`,
-        puntosJugador: 0
+        puntosJugador: 0,
+        turno: false
       });
     }
   }

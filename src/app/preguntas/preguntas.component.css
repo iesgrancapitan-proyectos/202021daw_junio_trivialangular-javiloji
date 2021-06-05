@@ -2,16 +2,40 @@
 
 /* Banderas */
 
+
+
 .inactive {
     *display: none;
 }
 
 div {
-    margin: 0 20% 10% 20%;
+    /* margin: 0 20% 10% 20%; */
 }
 
 div p {
     text-align: center;
+}
+
+.divPrincipal{
+    display: flex;
+    flex-direction: row;
+}
+
+.divJugadores{
+    display: flex;
+    flex-direction: column;
+}
+
+.divJugadores>div{
+    padding: 50px;
+}
+
+.divPreguntas{
+    display: flex;
+    flex-direction: column;
+    margin: 100px;
+    text-align: center;
+    margin: auto;
 }
 
 .containerRespuestas {
@@ -22,6 +46,13 @@ div p {
     *justify-items: center;
     *align-items: center;
     margin-bottom: 2%;
+}
+
+.iconito {
+    width: 30px;
+    vertical-align: middle;
+    text-align: center;
+    margin: 5px;
 }
 
 .mat-raised-button {

@@ -18,6 +18,7 @@ export class PreguntasComponent implements OnInit, AfterViewInit {
 
   public respuestaUnica: any = [];
 
+  public arrayJugadores: any = [];
 
   indexQuiz = 0;
   aciertos = 0;
@@ -28,81 +29,38 @@ export class PreguntasComponent implements OnInit, AfterViewInit {
 
   constructor(private route: ActivatedRoute, private http: HttpClient, private seleccion:SeleccionJugadoresComponent, private pruebaService:PruebaService) {
 
+    this.arrayJugadores= pruebaService.numeroJugadores;
+    console.log(this.arrayJugadores);
     console.log(pruebaService.numeroJugadores);
     // console.log(seleccion.numeroJugadores.value);
     // this.ache = seleccion.numeroJugadores;
+    this.primerTurno(this.arrayJugadores);
+  }
 
-    /* this.http.get('http://localhost/proyectoDaw/familiaCategoria').subscribe(categorias => {
- 
-       const jsonCategorias: any[] = Array.of(categorias);
- 
-       for (let i = 0; i < jsonCategorias[0].length; i++) {
-         
-         if(jsonCategorias[0][i]['id_familia'] == this.route.snapshot.paramMap.get("id")){
-           this.arrayCategorias.push(jsonCategorias[0][i]['id_categoria']);
-         };
-       }
-     })
- 
-    // this.http.get('http://localhost/proyectoDaw/preguntas').toPromise().then(data => {
-     this.http.get('http://localhost/proyectoDaw/preguntas').subscribe(data => {
-       console.log("datos", data);
-       const usersJson: any[] = Array.of(data);
-       console.log(usersJson);
-       // console.log(usersJson[0][2]['categoria']);
-       console.log(this.arrayCategorias);
-       for (let j = 0; j < this.arrayCategorias.length; j++) {
-         // console.log(this.arrayCategorias[j]);
-         
-         
-         for (let i = 0; i < usersJson[0].length; i++) {
-           // console.log(this.arrayCategorias[j]);
-           if(usersJson[0][i]['categoria'] == this.arrayCategorias[j]){
-             
-             this.preguntas.push(usersJson[0][i]);
-           };
-           
-           
-         }
-       }
- 
-       
- 
-       
-         // console.log(this.preguntas.length);
-          console.log(this.preguntas);
-         this.shuffle(this.preguntas);
-         this.shuffle(this.respuestaUnica);
-       
-       // console.log(this.arrayCategorias[1]);
- 
-     // console.log(this.preguntas);
-     // console.log(this.route.snapshot.paramMap.get("id"));
-     })    
- 
-     this.http.get('http://localhost/proyectoDaw/respuestas').subscribe(data => {
- 
-       const respuestasJson: any[] = Array.of(data);
- 
-       // console.log(respuestasJson);
- 
-         for (let i = 0; i < respuestasJson[0].length; i++) {
-           this.respuestas.push(respuestasJson[0][i]);
-           
-         }
- 
-       
-         // console.log(this.respuestas);
- 
-         this.avanzar();
-       
-       // console.log(this.arrayCategorias[1]);
- 
-     // console.log(this.preguntas);
-     // console.log(this.route.snapshot.paramMap.get("id"));
-     })    
- 
-     */
+  primerTurno(arrayJugadores: any){
+    return arrayJugadores[0].turno = true;
+  }
+
+  cambiarTurno(arrayJugadores:any){
+
+    let jugadorACambiar:any = 0;
+
+    for (let i = 0; i < arrayJugadores.length; i++) {
+
+      if(arrayJugadores[i].turno == true){
+        if(jugadorACambiar < (arrayJugadores.length)){
+          jugadorACambiar = i + 1;
+        }
+        arrayJugadores[i].turno = false;
+      }
+
+      if(jugadorACambiar == (arrayJugadores.length)){
+        jugadorACambiar = 0;
+      }
+    }
+
+    return arrayJugadores[jugadorACambiar].turno = true;
+
   }
 
   shuffle(array: any) {
@@ -138,20 +96,32 @@ export class PreguntasComponent implements OnInit, AfterViewInit {
     }
     this.respuestaUnica = [];
     this.calcularSiguientePregunta();
+    console.log(this.arrayJugadores);
+    this.cambiarTurno(this.arrayJugadores);
+    console.log(this.arrayJugadores);
 
   }
 
-  elegirRespuesta(respuesta: any, arrayRespuestas: any) {
+  elegirRespuesta(respuesta: any, arrayRespuestas: any, arrayJugadores:any) {
     
     let that = this;
     this.respuestaClicada = respuesta.respuesta;
     
     if (parseInt(respuesta.valida)) {
       this.aciertos++;
+      for (let i = 0; i < arrayJugadores.length; i++) {
+
+        if (arrayJugadores[i].turno == true) {
+          arrayJugadores[i].puntosJugador +=1;
+          
+        }
+    
+      }
     }
     arrayRespuestas.forEach((element: any) => {
       if (element.valida == 1) {
         that.respuestaValidaNombre = element.respuesta;
+        
         
       }
     });

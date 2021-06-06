@@ -9,12 +9,15 @@ import { SeleccionJugadoresComponent } from './seleccion-jugadores/seleccion-jug
 import { PreguntasComponent } from './preguntas/preguntas.component';
 
 import { PruebaService } from './prueba.service';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-// import { MatInputModule } from '@angular/material/input';
-// import { MatButtonModule } from '@angular/material/button';
-
-// import { MatIcon, MatIconModule } from '@angular/material/icon';
+// angular material - formularios
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 const rutas: Routes = [
   { path: '', component: JuegosComponent },
@@ -33,9 +36,18 @@ const rutas: Routes = [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(rutas),
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatRadioModule,
+    MatFormFieldModule,
+    MatIconModule
   ],
-  providers: [PruebaService,SeleccionJugadoresComponent],
+  providers: [
+    PruebaService,
+    SeleccionJugadoresComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

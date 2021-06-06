@@ -73,11 +73,10 @@ export class SeleccionJugadoresComponent {
         puntosJugador: 0,
         turno: false
       });
-
     }
   }
 
-  asignarRondas(){
+  asignarRondas() {
     this.pruebaService.numeroRondas = this.numeroRondas;
   }
 
@@ -87,7 +86,7 @@ export class SeleccionJugadoresComponent {
     // console.log(random);
     let iconitoAsignado = iconos[random];
 
-    iconos = this.iconitos.splice(random,1);
+    iconos = this.iconitos.splice(random, 1);
 
     // console.log("array", this.iconitos);
     // let iconoBorrado = this.iconitos.splice(random, 1);
@@ -111,6 +110,7 @@ export class SeleccionJugadoresComponent {
     });
 
     if (!this.showError) {
+      localStorage.setItem('jugadores', JSON.stringify(this.pruebaService.numeroJugadores));
       that.router.navigate(['/juego', this.idJuego]);
     } else {
       setTimeout(function () {

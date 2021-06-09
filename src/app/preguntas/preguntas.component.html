@@ -6,14 +6,15 @@
 <!-- Form que muestra el Quiz -->
 <div class="inactive" *ngIf="!quizCompleted" ngClass="divPrincipal">
     <div class="divJugadores">
-        <div class="box">
-            <p>Puntuación a alcanzar: {{numeroRondas}}</p>
+        <div class="box goalContainer">
+            <p><span class="material-icons star-icon">
+                    stars <!--viendo esto ahora en frio, no me parece tan intuitivo como me imaginaba cuando se me ocurrió. Ya me dirás que te parece Lopera ;)-->
+                </span> {{numeroRondas}}</p>
         </div>
-        <div class="box" *ngFor="let jugador of arrayJugadores; index as i" [ngClass]="{'jugadorDelTurno': jugador.turno == true}">
-            <p><img class="iconito" src="{{jugador.iconoJugador}}">Jugador {{jugador.numJugador}}</p>
-            <p class="nombreJugador">{{jugador.nombreJugador}}</p>
-            <p>Puntuación: {{jugador.puntosJugador}}</p>
-            
+        <div class="box" *ngFor="let jugador of arrayJugadores; index as i"
+            [ngClass]="{'jugadorDelTurno': jugador.turno == true}">
+            <p><img class="iconito" src="{{jugador.iconoJugador}}">Jug. {{jugador.numJugador}}</p>
+            <p class="nombreJugador">{{jugador.nombreJugador}} <span class="points">{{jugador.puntosJugador}}</span></p>
         </div>
     </div>
     <div class="divPreguntas">
@@ -25,14 +26,17 @@
                 *ngFor="let respuesta of respuestaUnica; index as i" class="opcion"
                 [ngClass]="{'correctAnswer': respuesta.respuesta == respuestaValidaNombre, 'wrongAnswer': respuestaValidaNombre != ''&& respuesta.respuesta == respuestaClicada && respuesta.respuesta != respuestaValidaNombre}"
                 id="opcion{{i+1}}" value="{{ respuesta.valida }}" [disabled]="respuestaClicada != ''">
-                <div><p>{{respuesta.respuesta}}</p></div></button>
+                <div>
+                    <p>{{respuesta.respuesta}}</p>
+                </div>
+            </button>
         </div>
         <div class="containerButtonNext">
             <button style="padding: 0 !important;" (click)="avanzar()" mat-fab id="buttonNext" class="buttonNext"
                 [ngClass]="{'buttonNextBlock': respuestaClicada != ''}">Avanzar
                 <span class="material-icons">
                     arrow_forward_ios
-                    </span>
+                </span>
             </button>
         </div>
     </div>
@@ -42,15 +46,16 @@
 
 
 
-<!-- Div que se muestra cuando acaba el Quiz --> 
+<!-- Div que se muestra cuando acaba el Quiz -->
 <div *ngIf="quizCompleted" class="divFinal">
     <h2 class="tituloPuntuacion">Puntuación Final: </h2>
-    <div class="jugadorFinal" *ngFor="let jugador of arrayJugadores; index as i" [ngClass]="{'correctAnswer': jugador.turno == true}">
+    <div class="jugadorFinal" *ngFor="let jugador of arrayJugadores; index as i"
+        [ngClass]="{'correctAnswer': jugador.turno == true}">
         <p>Nombre Jugador: {{jugador.nombreJugador}}</p>
         <p>Puntuación: {{jugador.puntosJugador}}</p>
         <img class="iconito" src="{{jugador.iconoJugador}}">
     </div>
-    <div class="volverAJugar" >
-        <a [routerLink]="['/']" style="cursor: pointer;"><button >Volver al menú principal</button></a>
+    <div class="volverAJugar">
+        <a [routerLink]="['/']" style="cursor: pointer;"><button>Volver al menú principal</button></a>
     </div>
 </div>

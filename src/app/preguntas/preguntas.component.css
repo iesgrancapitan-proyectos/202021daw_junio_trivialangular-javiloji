@@ -51,7 +51,7 @@ div p {
 
 .divPreguntas > p{
     width: 500px;
-    margin: auto;
+    margin: 5% auto;
     font-weight: 600;
     font-size: 28px;
     padding: 10px;
@@ -70,6 +70,14 @@ div p {
 
 .containerRespuestas > button{
     font-size: 22px;
+    background-color: #F0CB98;
+    transition: transform .2s;
+}
+
+.containerRespuestas > button:hover {
+    background-color: #F4C380;
+    transform: scale(1.1);
+    /* transition: all 0s; */
 }
 
 .iconito {
@@ -182,6 +190,26 @@ div p {
 
 .box {
     border-radius: 10px;
+}
+
+.points {
+    background-color: #5FD236;
+    color: #fff;
+    border-radius: 30%;
+    padding: 3px;
+}
+
+.goalContainer {
+    width: 50% !important;
+}
+
+.star-icon {
+    vertical-align: middle;
+    color: #CCD236;
+}
+
+.box p {
+    margin: 0 !important;
 }
 
 @keyframes changingColor {

@@ -7,19 +7,37 @@
 <div class="inactive" *ngIf="!quizCompleted" ngClass="divPrincipal">
     <div class="divJugadores">
         <div class="box goalContainer">
-            <p><span class="material-icons star-icon">
-                    stars <!--viendo esto ahora en frio, no me parece tan intuitivo como me imaginaba cuando se me ocurrió. Ya me dirás que te parece Lopera ;)-->
-                </span> {{numeroRondas}}</p>
+            <p>Puntuación Objetivo:  {{numeroRondas}}<span class="material-icons star-icon">
+                stars <!--viendo esto ahora en frio, no me parece tan intuitivo como me imaginaba cuando se me ocurrió. Ya me dirás que te parece Lopera ;)-->
+            </span></p>
         </div>
         <div class="box" *ngFor="let jugador of arrayJugadores; index as i"
             [ngClass]="{'jugadorDelTurno': jugador.turno == true}">
-            <p><img class="iconito" src="{{jugador.iconoJugador}}">Jug. {{jugador.numJugador}}</p>
-            <p class="nombreJugador">{{jugador.nombreJugador}} <span class="points">{{jugador.puntosJugador}}</span></p>
+            <div>
+                <img class="iconito" src="{{jugador.iconoJugador}}">
+            </div>
+            <div>
+                <p>Jug. {{jugador.numJugador}}</p>
+                <p class="nombreJugador">{{jugador.nombreJugador}}</p>
+            </div>
+             <div>
+                 <span class="points">{{jugador.puntosJugador}}</span>
+                 <span class="material-icons star-icon starsPuntuacion">
+                    stars <!--viendo esto ahora en frio, no me parece tan intuitivo como me imaginaba cuando se me ocurrió. Ya me dirás que te parece Lopera ;)-->
+                </span>
+            </div>
         </div>
     </div>
+    <!-- <iframe width="400" height="400" src="https://www.youtube.com/watch?v=U2wR7eRYuFQ"  frameborder="0" allowfullscreen></iframe> -->
+
     <div class="divPreguntas">
         <p *ngIf="preguntas[0]">{{ preguntas[0].categoria }}</p>
         <p class="tituloPregunta" *ngIf="preguntas[0]">{{ preguntas[0].pregunta }}</p>
+        <!-- <div *ngIf="preguntas[0].tipoObjeto">
+            <iframe width="300" height="300" src="{{preguntas[0].Objeto}}"  frameborder="0" allowfullscreen></iframe>
+        </div> -->
+        <!-- <div *ngIf="preguntas[0].tipoObjeto">{{establecerObjetoExterno(preguntas[0])}}</div>
+        <div  [innerHTML]="etiqueta"></div> -->
         <br />
         <div class="containerRespuestas">
             <button (click)="elegirRespuesta(respuesta, respuestaUnica,arrayJugadores)" mat-raised-button

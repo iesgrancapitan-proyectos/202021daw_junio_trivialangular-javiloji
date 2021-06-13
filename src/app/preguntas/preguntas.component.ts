@@ -26,6 +26,8 @@ export class PreguntasComponent implements OnInit, AfterViewInit {
   public voices: SpeechSynthesisVoice[];
   public voice_es: SpeechSynthesisVoice | null;
 
+  public etiqueta: any = "";
+
   indexQuiz = 0;
   aciertos = 0;
   respuestaValidaNombre = "";
@@ -169,6 +171,21 @@ export class PreguntasComponent implements OnInit, AfterViewInit {
     });
   }
 
+  establecerObjetoExterno(objeto : any){
+    this.etiqueta = "";
+
+    if(objeto.tipoObjeto == "Link"){
+      this.etiqueta = `<iframe width='300' height='300' src="` +objeto.Objeto +`"  frameborder='0' allowfullscreen></iframe>`;
+    }
+    if(objeto.tipoObjeto == "Imagen"){
+      this.etiqueta = `<img width='300' height='300' src="http://localhost/sabiogc/` + objeto.Objeto + `" />`;
+    }
+
+    console.log(this.etiqueta);
+    // return this.etiqueta;
+
+  }
+
   getRespuestas() {
 
 
@@ -212,9 +229,6 @@ export class PreguntasComponent implements OnInit, AfterViewInit {
       that.getPreguntas();
 
     })
-
-
-
   }
 
   ngAfterViewInit(): void {

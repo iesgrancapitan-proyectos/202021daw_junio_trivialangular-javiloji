@@ -51,11 +51,9 @@ export class PreguntasComponent implements OnInit, AfterViewInit {
 
   asignarJugadores() {
     if (this.pruebaService.numeroJugadores.length == 0) {
-      console.log("entro");
       let arrayJugadoresStorage = localStorage.getItem('jugadores');
       if (arrayJugadoresStorage) this.arrayJugadores = JSON.parse(arrayJugadoresStorage);
     } else {
-      console.log("else");
       this.arrayJugadores = this.pruebaService.numeroJugadores;
     }
     console.log(this.arrayJugadores);

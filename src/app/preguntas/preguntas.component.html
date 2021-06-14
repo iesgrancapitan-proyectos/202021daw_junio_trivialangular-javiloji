@@ -7,9 +7,10 @@
 <div class="inactive" *ngIf="!quizCompleted" ngClass="divPrincipal">
     <div class="divJugadores">
         <div class="box goalContainer">
-            <p>Puntuación Objetivo:  {{numeroRondas}}<span class="material-icons star-icon">
-                stars <!--viendo esto ahora en frio, no me parece tan intuitivo como me imaginaba cuando se me ocurrió. Ya me dirás que te parece Lopera ;)-->
-            </span></p>
+            <p>Puntuación Objetivo: {{numeroRondas}}<span class="material-icons star-icon">
+                    stars
+                    <!--viendo esto ahora en frio, no me parece tan intuitivo como me imaginaba cuando se me ocurrió. Ya me dirás que te parece Lopera ;)-->
+                </span></p>
         </div>
         <div class="box" *ngFor="let jugador of arrayJugadores; index as i"
             [ngClass]="{'jugadorDelTurno': jugador.turno == true}">
@@ -20,10 +21,11 @@
                 <p>Jug. {{jugador.numJugador}}</p>
                 <p class="nombreJugador">{{jugador.nombreJugador}}</p>
             </div>
-             <div>
-                 <span class="points">{{jugador.puntosJugador}}</span>
-                 <span class="material-icons star-icon starsPuntuacion">
-                    stars <!--viendo esto ahora en frio, no me parece tan intuitivo como me imaginaba cuando se me ocurrió. Ya me dirás que te parece Lopera ;)-->
+            <div>
+                <span class="points">{{jugador.puntosJugador}}</span>
+                <span class="material-icons star-icon starsPuntuacion">
+                    stars
+                    <!--viendo esto ahora en frio, no me parece tan intuitivo como me imaginaba cuando se me ocurrió. Ya me dirás que te parece Lopera ;)-->
                 </span>
             </div>
         </div>
@@ -33,6 +35,9 @@
     <div class="divPreguntas">
         <p *ngIf="preguntas[0]">{{ preguntas[0].categoria }}</p>
         <p class="tituloPregunta" *ngIf="preguntas[0]">{{ preguntas[0].pregunta }}</p>
+        <img *ngIf="preguntas[0] && preguntas[0].tipoObjeto == 'Imagen'" src="{{preguntas[0].Objeto}}" class="img-pregunta">
+        <mat-icon class="link-icon"><a *ngIf="preguntas[0] && preguntas[0].tipoObjeto == 'Link'" href="{{preguntas[0].Objeto}}"
+                target="_blank">link</a></mat-icon>
         <!-- <div *ngIf="preguntas[0].tipoObjeto">
             <iframe width="300" height="300" src="{{preguntas[0].Objeto}}"  frameborder="0" allowfullscreen></iframe>
         </div> -->

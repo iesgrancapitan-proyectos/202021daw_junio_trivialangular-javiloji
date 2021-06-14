@@ -235,6 +235,25 @@ div p {
     margin: 0 !important;
 }
 
+.img-pregunta {
+    margin: 0 auto;
+    max-width: 200px;
+    max-height: 150px;
+}
+
+.link-icon {
+    margin: 0 auto;
+}
+
+.link-icon a {
+    text-decoration: none;
+    color:#000;
+}
+
+.link-icon:hover {
+    transform: scale(1.5);
+}
+
 @keyframes changingColor {
     0% {
         background: #fff;

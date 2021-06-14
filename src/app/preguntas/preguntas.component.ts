@@ -58,7 +58,7 @@ export class PreguntasComponent implements OnInit, AfterViewInit {
     } else {
       this.arrayJugadores = this.pruebaService.numeroJugadores;
     }
-    console.log(this.arrayJugadores);
+    // console.log(this.arrayJugadores);
   }
 
   primerTurno(arrayJugadores: any) {
@@ -203,15 +203,15 @@ export class PreguntasComponent implements OnInit, AfterViewInit {
         if (that.arrayCategorias.includes(data[i].categoria)) {
           that.preguntas.push(data[i]);
         }
+        
       }
 
+      console.log(that.preguntas);
+      console.log(that.preguntas[0].objeto);
 
       that.shuffle(this.preguntas);
 
-
       that.getRespuestas();
-
-
     })
   }
   getCategorias() {

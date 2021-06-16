@@ -21,8 +21,10 @@
     <div class="divPreguntas">
         <p *ngIf="preguntas[0]">{{ preguntas[0].categoria }}</p>
         <p class="tituloPregunta" *ngIf="preguntas[0]">{{ preguntas[0].pregunta }}</p>
-        
+        <img *ngIf="preguntas[0] && preguntas[0].tipoObjeto == 'Imagen'" src="http://localhost/sabiogc/uploads/imagenes/{{preguntas[0].Objeto}}" class="img-pregunta">
         <!-- <img src="http://localhost/sabiogc/uploads/imagenes/banderaChile.png" width="200px" height="200px" alt=""> -->
+        <mat-icon class="link-icon"><a *ngIf="preguntas[0] && preguntas[0].tipoObjeto == 'Link'" href="{{preguntas[0].Objeto}}"
+            target="_blank">link</a></mat-icon>
         <br />
         <div class="containerRespuestas">
             <button (click)="elegirRespuesta(respuesta, respuestaUnica,arrayJugadores)" mat-raised-button

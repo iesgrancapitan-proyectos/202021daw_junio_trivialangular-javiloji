@@ -35,6 +35,7 @@
     <div class="divPreguntas">
         <p *ngIf="preguntas[0]">{{ preguntas[0].categoria }}</p>
         <p class="tituloPregunta" *ngIf="preguntas[0]">{{ preguntas[0].pregunta }}</p>
+<<<<<<< HEAD
         <img *ngIf="preguntas[0] && preguntas[0].tipoObjeto == 'Imagen'" src="{{preguntas[0].Objeto}}" class="img-pregunta">
         <mat-icon class="link-icon"><a *ngIf="preguntas[0] && preguntas[0].tipoObjeto == 'Link'" href="{{preguntas[0].Objeto}}"
                 target="_blank">link</a></mat-icon>
@@ -43,6 +44,10 @@
         </div> -->
         <!-- <div *ngIf="preguntas[0].tipoObjeto">{{establecerObjetoExterno(preguntas[0])}}</div>
         <div  [innerHTML]="etiqueta"></div> -->
+=======
+        
+        <!-- <img src="http://localhost/sabiogc/uploads/imagenes/banderaChile.png" width="200px" height="200px" alt=""> -->
+>>>>>>> 9607d4ed47604c68dc1b4d320fc9f6ed36585b9a
         <br />
         <div class="containerRespuestas">
             <button (click)="elegirRespuesta(respuesta, respuestaUnica,arrayJugadores)" mat-raised-button

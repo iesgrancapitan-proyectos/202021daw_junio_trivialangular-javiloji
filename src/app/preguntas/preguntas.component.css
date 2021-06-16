@@ -21,11 +21,7 @@ div p {
 .divJugadores{
     display: flex;
     flex-direction: row;
-<<<<<<< HEAD
     width: 30%;
-=======
-    width: 50%;
->>>>>>> 9607d4ed47604c68dc1b4d320fc9f6ed36585b9a
     flex-wrap: wrap;
     align-items: center;
 }
@@ -48,11 +44,9 @@ div p {
     flex-wrap: wrap;
     align-items: center;
     padding: 30px;
-<<<<<<< HEAD
     flex: 80%;
-=======
     width: 35%;
->>>>>>> 9607d4ed47604c68dc1b4d320fc9f6ed36585b9a
+
     margin: 15px auto;
     border: 1px solid rgba(0,0,0,0.4);
 }
@@ -78,11 +72,8 @@ div p {
 }
 
 .divPreguntas > p{
-<<<<<<< HEAD
-=======
     width: 500px;
     margin: 0 auto;
->>>>>>> 9607d4ed47604c68dc1b4d320fc9f6ed36585b9a
     font-weight: 600;
     font-size: 28px;
     padding: 10px;

@@ -21,6 +21,8 @@
     <div class="divPreguntas">
         <p *ngIf="preguntas[0]">{{ preguntas[0].categoria }}</p>
         <p class="tituloPregunta" *ngIf="preguntas[0]">{{ preguntas[0].pregunta }}</p>
+        
+        <!-- <img src="http://localhost/sabiogc/uploads/imagenes/banderaChile.png" width="200px" height="200px" alt=""> -->
         <br />
         <div class="containerRespuestas">
             <button (click)="elegirRespuesta(respuesta, respuestaUnica,arrayJugadores)" mat-raised-button

@@ -21,7 +21,7 @@ div p {
 .divJugadores{
     display: flex;
     flex-direction: row;
-    width: 40%;
+    width: 50%;
     flex-wrap: wrap;
     align-items: center;
 }
@@ -33,7 +33,7 @@ div p {
 
 .divJugadores>div{
     padding: 30px;
-    width: 40%;
+    width: 35%;
     margin: 15px auto;
     border: 1px solid rgba(0,0,0,0.4);
 }
@@ -51,7 +51,7 @@ div p {
 
 .divPreguntas > p{
     width: 500px;
-    margin: auto;
+    margin: 0 auto;
     font-weight: 600;
     font-size: 28px;
     padding: 10px;

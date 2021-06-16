@@ -32,7 +32,7 @@ export class PreguntasComponent implements OnInit, AfterViewInit {
   constructor(private route: ActivatedRoute, private http: HttpClient, private seleccion: SeleccionJugadoresComponent, private pruebaService: PruebaService) {
     this.asignarJugadores();
     this.numeroRondas = pruebaService.numeroRondas;
-    // console.log(this.arrayJugadores);
+    console.log(this.preguntas);
     // console.log(pruebaService.numeroJugadores);
     // console.log(seleccion.numeroJugadores.value);
     // this.ache = seleccion.numeroJugadores;

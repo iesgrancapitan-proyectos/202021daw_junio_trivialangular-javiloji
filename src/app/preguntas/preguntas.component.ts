@@ -15,12 +15,18 @@ export class PreguntasComponent implements OnInit, AfterViewInit {
   public arrayCategorias: any = [];
   public preguntas: any = [];
   public respuestas: any = [];
-
   public respuestaUnica: any = [];
 
   public arrayJugadores: any = [];
   public numeroRondas: any = 2;
 
+  /** Voices */
+  public sayCommand: string;
+  public text: string;
+  public voices: SpeechSynthesisVoice[];
+  public voice_es: SpeechSynthesisVoice | null;
+
+  public etiqueta: any = "";
 
   indexQuiz = 0;
   aciertos = 0;
@@ -37,18 +43,22 @@ export class PreguntasComponent implements OnInit, AfterViewInit {
     // console.log(seleccion.numeroJugadores.value);
     // this.ache = seleccion.numeroJugadores;
     this.primerTurno(this.arrayJugadores);
+
+    /** Voices */
+    this.voices = [];
+    this.voice_es = null;
+    this.text = " ";
+    this.sayCommand = "";
   }
 
   asignarJugadores() {
     if (this.pruebaService.numeroJugadores.length == 0) {
-      console.log("entro");
       let arrayJugadoresStorage = localStorage.getItem('jugadores');
       if (arrayJugadoresStorage) this.arrayJugadores = JSON.parse(arrayJugadoresStorage);
     } else {
-      console.log("else");
       this.arrayJugadores = this.pruebaService.numeroJugadores;
     }
-    console.log(this.arrayJugadores);
+    // console.log(this.arrayJugadores);
   }
 
   primerTurno(arrayJugadores: any) {
@@ -96,6 +106,8 @@ export class PreguntasComponent implements OnInit, AfterViewInit {
       }
     }
 
+    // El bot dice en voz alta el título de la pregunta
+    this.speak(this.preguntas[0].pregunta);
   }
 
 
@@ -112,7 +124,7 @@ export class PreguntasComponent implements OnInit, AfterViewInit {
     // }
     array = this.preguntas.splice(0, 1);
 
-    console.log(this.preguntas);
+    // console.log(this.preguntas);
 
 
     // else {
@@ -157,6 +169,21 @@ export class PreguntasComponent implements OnInit, AfterViewInit {
     });
   }
 
+  establecerObjetoExterno(objeto : any){
+    this.etiqueta = "";
+
+    if(objeto.tipoObjeto == "Link"){
+      this.etiqueta = `<iframe width='300' height='300' src="` +objeto.Objeto +`"  frameborder='0' allowfullscreen></iframe>`;
+    }
+    if(objeto.tipoObjeto == "Imagen"){
+      this.etiqueta = `<img width='300' height='300' src="http://localhost/sabiogc/` + objeto.Objeto + `" />`;
+    }
+
+    console.log(this.etiqueta);
+    // return this.etiqueta;
+
+  }
+
   getRespuestas() {
 
 
@@ -176,15 +203,15 @@ export class PreguntasComponent implements OnInit, AfterViewInit {
         if (that.arrayCategorias.includes(data[i].categoria)) {
           that.preguntas.push(data[i]);
         }
+        
       }
 
+      console.log(that.preguntas);
+      console.log(that.preguntas[0].objeto);
 
       that.shuffle(this.preguntas);
 
-
       that.getRespuestas();
-
-
     })
   }
   getCategorias() {
@@ -200,9 +227,6 @@ export class PreguntasComponent implements OnInit, AfterViewInit {
       that.getPreguntas();
 
     })
-
-
-
   }
 
   ngAfterViewInit(): void {
@@ -210,6 +234,93 @@ export class PreguntasComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.getCategorias();
+
+    /** VOICES */
+    this.voices = speechSynthesis.getVoices();
+    this.updateSayCommand();
+
+    if (!this.voices.length) {
+
+      speechSynthesis.addEventListener(
+        "voiceschanged",
+        () => {
+
+          this.voices = speechSynthesis.getVoices();
+          this.voice_es = (this.voices[4] || null);
+          this.updateSayCommand();
+
+        }
+      );
+
+    }
+  }
+
+  // I synthesize speech from the current text for the currently-selected voice.
+  public speak(pregunta: string): void {
+
+    if (!this.voice_es || !this.text) {
+
+      return;
+
+    }
+
+    this.text = pregunta;
+    // console.log(this.voice_es);
+    // console.log(this.text);
+
+    this.stop();
+    this.synthesizeSpeechFromText(this.voice_es, this.text);
+  }
+
+
+  // I stop any current speech synthesis.
+  public stop(): void {
+
+    if (speechSynthesis.speaking) {
+
+      speechSynthesis.cancel();
+
+    }
+
+  }
+
+
+  // I update the "say" command that can be used to generate the a sound file from the
+  // current speech synthesis configuration.
+  public updateSayCommand(): void {
+
+    if (!this.voice_es || !this.text) {
+
+      return;
+
+    }
+
+    // With the say command, the rate is the number of words-per-minute. As such, we
+    // have to finagle the SpeechSynthesis rate into something roughly equivalent for
+    // the terminal-based invocation.
+    var sanitizedText = this.text
+      .replace(/[\r\n]/g, " ")
+      .replace(/(["'\\\\/])/g, "\\$1")
+      ;
+
+    // console.log(this.voice_es.name);
+    this.sayCommand = `say --voice ${this.voice_es.name} --output-file=demo.aiff "${sanitizedText}"`;
+
+  }
+
+  // ---
+  // PRIVATE METHODS.
+  // ---
+
+  // I perform the low-level speech synthesis for the given voice, rate, and text.
+  private synthesizeSpeechFromText(
+    voice: SpeechSynthesisVoice,
+    text: string
+  ): void {
+    var utterance = new SpeechSynthesisUtterance(text);
+    utterance.voice = this.voice_es;
+
+    speechSynthesis.speak(utterance);
   }
 
 }

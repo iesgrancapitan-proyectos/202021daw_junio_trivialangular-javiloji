@@ -21,25 +21,44 @@ div p {
 .divJugadores{
     display: flex;
     flex-direction: row;
-    width: 50%;
+    width: 30%;
     flex-wrap: wrap;
     align-items: center;
 }
 .divJugadores>div:first-child {
     width: 100%;
     border-bottom: 3px solid rgba(0,0,0,0.4);
+    justify-content: center;
+
+}
+
+.divJugadores>div:first-child>p{
+    font-size: 22px;
+    font-weight: 500;
 
 }
 
 .divJugadores>div{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
     padding: 30px;
+    flex: 80%;
     width: 35%;
+
     margin: 15px auto;
     border: 1px solid rgba(0,0,0,0.4);
 }
 
+.divJugadores>div>div{
+    flex: 30%;
+}
+
 .nombreJugador{
     font-weight: 700;
+    padding: 20px;
+    font-size: 30px !important;
 }
 
 .divPreguntas{
@@ -47,6 +66,9 @@ div p {
     flex-direction: column;
     text-align: center;
     margin: 0 auto;
+    /* flex: 40%; */
+    width: 100%;
+    padding: 40px;
 }
 
 .divPreguntas > p{
@@ -60,20 +82,25 @@ div p {
 .containerRespuestas {
     display: grid;
     grid-gap: 20px;
-    width: 700px;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 125px);
-    *justify-items: center;
-    *align-items: center;
     margin-bottom: 2%;
 }
 
 .containerRespuestas > button{
     font-size: 22px;
+    background-color: #D8D7FF;
+    transition: transform .2s;
+}
+
+.containerRespuestas > button:hover {
+    background-color: #6C6BE3;
+    transform: scale(1.02);
+    /* transition: all 0s; */
 }
 
 .iconito {
-    width: 30px;
+    width: 50px;
     vertical-align: middle;
     text-align: center;
     margin: 5px;
@@ -172,6 +199,13 @@ div p {
     color: #000 !important;
 }
 
+.material-icons{
+    font-family: 'Material Icons' !important;
+}
+
+.material-icons a{
+    font-family: 'Material Icons' !important;
+}
 .tituloPregunta {
     line-height: 40px;
 }
@@ -184,21 +218,68 @@ div p {
     border-radius: 10px;
 }
 
+.points {
+    border-radius: 30%;
+    padding: 3px;
+    font-size: 40px;
+}
+
+.starsPuntuacion{
+    font-size: 40px !important;
+    vertical-align: bottom !important;
+}
+
+.goalContainer {
+    width: 50% !important;
+}
+
+.star-icon {
+    vertical-align: text-bottom;
+    color: #6C6BE3;
+    font-size: 30px;
+    padding: 0 5px;
+}
+
+.box p {
+    margin: 0 !important;
+}
+
+.img-pregunta {
+    margin: 0 auto;
+    max-width: 200px;
+    max-height: 150px;
+}
+
+.link-icon {
+    margin: 0 auto;
+}
+
+.link-icon a {
+    text-decoration: none;
+    color:#000;
+    font-size: 40px;
+}
+
+.link-icon:hover {
+    transform: scale(1.5);
+}
+
 @keyframes changingColor {
     0% {
         background: #fff;
     }
     50% {
-        background: lightsteelblue;
+        background: #D8D7FF;
     }
     100% {
         background: #fff;
     }
 }
 
+
 @media screen and (max-width: 1100px) {
     .divPrincipal {
-        flex-direction: column;
+        flex-direction: column-reverse;
 
     }
 

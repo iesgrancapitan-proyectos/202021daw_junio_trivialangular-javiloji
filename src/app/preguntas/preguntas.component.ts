@@ -1,3 +1,4 @@
+
 import { Component, ViewChild, ElementRef, AfterViewInit, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -33,6 +34,8 @@ export class PreguntasComponent implements OnInit, AfterViewInit {
   respuestaValidaNombre = "";
   respuestaClicada = "";
   quizCompleted = false;
+  partidaEmpezada = false;
+  preguntaAlmacenada = "";
   // ache = "";
 
   constructor(private route: ActivatedRoute, private http: HttpClient, private seleccion: SeleccionJugadoresComponent, private pruebaService: PruebaService) {
@@ -107,7 +110,11 @@ export class PreguntasComponent implements OnInit, AfterViewInit {
     }
 
     // El bot dice en voz alta el título de la pregunta
-    this.speak(this.preguntas[0].pregunta);
+    if (this.partidaEmpezada) {
+      this.speak(this.preguntas[0].pregunta);
+    } else {
+      this.preguntaAlmacenada = this.preguntas[0].pregunta;
+    }
   }
 
 
@@ -144,15 +151,20 @@ export class PreguntasComponent implements OnInit, AfterViewInit {
 
     if (parseInt(respuesta.valida)) {
       this.aciertos++;
+
       for (let i = 0; i < arrayJugadores.length; i++) {
 
         if (arrayJugadores[i].turno == true) {
           arrayJugadores[i].puntosJugador += 1;
+
+          if (this.arrayJugadores[i].puntosJugador < this.numeroRondas) {
+            this.reproducirAudio("respuestaCorrecta");
+          }
         }
 
         if (this.arrayJugadores[i].puntosJugador == this.numeroRondas) {
           this.quizCompleted = true;
-
+          this.reproducirAudio("aplausos");
         }
 
       }
@@ -163,19 +175,17 @@ export class PreguntasComponent implements OnInit, AfterViewInit {
     arrayRespuestas.forEach((element: any) => {
       if (element.valida == 1) {
         that.respuestaValidaNombre = element.respuesta;
-
-
       }
     });
   }
 
-  establecerObjetoExterno(objeto : any){
+  establecerObjetoExterno(objeto: any) {
     this.etiqueta = "";
 
-    if(objeto.tipoObjeto == "Link"){
-      this.etiqueta = `<iframe width='300' height='300' src="` +objeto.Objeto +`"  frameborder='0' allowfullscreen></iframe>`;
+    if (objeto.tipoObjeto == "Link") {
+      this.etiqueta = `<iframe width='300' height='300' src="` + objeto.Objeto + `"  frameborder='0' allowfullscreen></iframe>`;
     }
-    if(objeto.tipoObjeto == "Imagen"){
+    if (objeto.tipoObjeto == "Imagen") {
       this.etiqueta = `<img width='300' height='300' src="http://localhost/sabiogc/` + objeto.Objeto + `" />`;
     }
 
@@ -203,7 +213,7 @@ export class PreguntasComponent implements OnInit, AfterViewInit {
         if (that.arrayCategorias.includes(data[i].categoria)) {
           that.preguntas.push(data[i]);
         }
-        
+
       }
 
       console.log(that.preguntas);
@@ -321,6 +331,26 @@ export class PreguntasComponent implements OnInit, AfterViewInit {
     utterance.voice = this.voice_es;
 
     speechSynthesis.speak(utterance);
+  }
+
+  public reproducirAudio(texto: String) {
+    let audio = new Audio();
+    audio.src = '../../assets/mp3/' + texto + '.mp3';
+    // new Audio('../../assets/mp3/' + texto + '.mp3').play();
+
+    setTimeout(function () {
+      audio.play();
+
+      setTimeout(function () {
+        audio.pause();
+        audio.currentTime = 0;
+      }, 7000);
+    }, 0);
+  }
+
+  public comenzarPartida() {
+    this.partidaEmpezada = true;
+    this.speak(this.preguntaAlmacenada);
   }
 
 }

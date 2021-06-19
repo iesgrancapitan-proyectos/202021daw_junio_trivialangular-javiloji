@@ -1,6 +1,6 @@
+
 <div id="titulo">
     <h2>{{tituloJuego}}</h2>
-    <h4>Elección de jugadores</h4>
 </div>
 <!-- <input [(ngModel)]='numeroJugadores' 
 type="text" 
@@ -12,29 +12,33 @@ aria-describedby="basic-addon1"> -->
 
 <div class="containerElectionPlayers">
     <div>
-        <label for="players">Número de jugadores</label>
-        <div>
-            <select [(ngModel)]="selectedOption" (change)="generarJugadores()" name="players" id="players">
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-            </select>
+        <div class="containerPlayers">
+            <label for="players">Número de jugadores</label>
+            <div>
+                <select [(ngModel)]="selectedOption" (change)="generarJugadores()" name="players" id="players">
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
         </div>
-        <label for="players">Ganador al mejor de:</label>
-        <div>
-            <select [(ngModel)]="numeroRondas" (change)="asignarRondas()" name="rondas" id="rondas">
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-            </select>
+        <div class="containerRondas">
+            <label for="rondas">Ganador al mejor de:</label>
+            <div>
+                <select [(ngModel)]="numeroRondas" (change)="asignarRondas()" name="rondas" id="rondas">
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
         </div>
-        <div *ngIf="selectedOption">
+        <div class="containerInputsPlayers" *ngIf="selectedOption">
             <div *ngFor="let player of pruebaService.numeroJugadores; index as i" class="inputPlayerContainer">
                 <label for="player{{player.numJugador}}">Nombre de jugador {{player.numJugador}}: </label>
                 <input type="text" id="player{{player.numJugador}}" [(ngModel)]="player.nombreJugador">
@@ -46,6 +50,7 @@ aria-describedby="basic-addon1"> -->
 </div>
 
 <div id="botonContainer">
-    <a (click)="checkName()" id="botonEmpezar" style="cursor: pointer;"><button [ngClass]="{'error': showError}">Empezar Juego</button></a>
+    <a (click)="checkName()" id="botonEmpezar" style="cursor: pointer;"><button [ngClass]="{'error': showError}">Empezar
+            Juego</button></a>
     <!-- [routerLink]="['/juego', idJuego]" -->
 </div>

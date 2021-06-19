@@ -1,3 +1,4 @@
+
 .inactive {
     *display: none;
 }
@@ -37,21 +38,18 @@ div p {
 .divJugadores>div{
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     align-items: center;
     padding: 30px;
     flex: 80%;
     width: 35%;
+
     margin: 15px auto;
     border: 1px solid rgba(0,0,0,0.4);
 }
 
 .divJugadores>div>div{
     flex: 30%;
-}
-
-.divJugadores>div>div>p{
-    line-height: 30px;
 }
 
 .nombreJugador{
@@ -65,7 +63,6 @@ div p {
     flex-direction: column;
     text-align: center;
     margin: 0 auto;
-    /* flex: 40%; */
     width: 100%;
     padding: 40px;
 }
@@ -76,6 +73,10 @@ div p {
     font-weight: 600;
     font-size: 28px;
     padding: 10px;
+}
+
+.divPreguntas .mat-icon {
+    height: 100%;
 }
 
 .containerRespuestas {
@@ -95,7 +96,6 @@ div p {
 .containerRespuestas > button:hover {
     background-color: #6C6BE3;
     transform: scale(1.02);
-    /* transition: all 0s; */
 }
 
 .iconito {
@@ -149,6 +149,10 @@ div p {
     background-color: red;
 }
 
+.winner {
+    background-color: lightgreen;
+}
+
 .disabled-button {
     pointer-events: none;
     background-color: lightgray !important;
@@ -156,7 +160,11 @@ div p {
 
 .divFinal{
     text-align: center;
+}
 
+.divFinal .jugadorFinal p {
+    font-size: 36px !important;
+    margin-bottom: 15px;
 }
 
 .tituloPuntuacion{
@@ -171,7 +179,10 @@ div p {
 .jugadorFinal{
     width: 40%;
     margin: auto;
+    padding: 1%;
     border: 1px solid rgba(0,0,0,0.4);
+    border-radius: 100px;
+    box-shadow: 0px 0px 15px 3px #888888;
     margin-top: 50px;
 
 }
@@ -183,7 +194,9 @@ div p {
 .volverAJugar > a > button{
     width: 200px;
     padding: 10px;
-    background-color: antiquewhite;
+    background-color: #6C6BE3;
+    color: #fff;
+    border-radius: 10px;
     margin: 20px;
 }
 
@@ -263,6 +276,123 @@ div p {
     transform: scale(1.5);
 }
 
+.comenzarPartida {
+    position: absolute;
+    background-color: Rgba(255,255,255,0.8);
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pure-material-button-contained {
+    z-index: 11;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 4px;
+    padding: 0 16px;
+    min-width: 64px;
+    height: 80px;
+    vertical-align: middle;
+    text-align: left;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    color: rgb(var(--pure-material-onprimary-rgb, 255, 255, 255));
+    background-color: #6C6BE3;
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    font-family: var(--pure-material-font, "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui, -apple-system);
+    font-size: 50px;
+    font-weight: 500;
+    line-height: 36px;
+    overflow: hidden;
+    outline: none;
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+}
+
+.pure-material-button-contained::-moz-focus-inner {
+    border: none;
+}
+
+/* Overlay */
+.pure-material-button-contained::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(var(--pure-material-onprimary-rgb, 255, 255, 255));
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+/* Ripple */
+.pure-material-button-contained::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 50%;
+    padding: 50%;
+    width: 32px; /* Safari */
+    height: 32px; /* Safari */
+    background-color: rgb(var(--pure-material-onprimary-rgb, 255, 255, 255));
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1);
+    transition: opacity 1s, transform 0.5s;
+}
+
+/* Hover, Focus */
+.pure-material-button-contained:hover,
+.pure-material-button-contained:focus {
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.pure-material-button-contained:hover::before {
+    opacity: 0.08;
+}
+
+.pure-material-button-contained:focus::before {
+    opacity: 0.24;
+}
+
+.pure-material-button-contained:hover:focus::before {
+    opacity: 0.3;
+}
+
+/* Active */
+.pure-material-button-contained:active {
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.pure-material-button-contained:active::after {
+    opacity: 0.32;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0s;
+}
+
+/* Disabled */
+.pure-material-button-contained:disabled {
+    color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.38);
+    background-color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.12);
+    box-shadow: none;
+    cursor: initial;
+}
+
+.pure-material-button-contained:disabled::before {
+    opacity: 0;
+}
+
+.pure-material-button-contained:disabled::after {
+    opacity: 0;
+}
+
 @keyframes changingColor {
     0% {
         background: #fff;
@@ -296,9 +426,17 @@ div p {
         margin: auto !important;
     }
 
+    .containerRespuestas p {
+        font-size: 14px;
+    }
+
+    .divPreguntas {
+        width: unset;
+    }
+
     .divPreguntas > p{
         width: 80%;
-        font-size: 20px;
+        font-size: 18px;
 
     }
 
@@ -306,4 +444,31 @@ div p {
         width: 80%;
     }
 
-} 
+    .buttonNext {
+        margin-top: 5%;
+    }
+
+    .buttonNext .avanzarText{
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 520px) {
+    .tituloPuntuacion {
+        font-size: 25px;
+    }
+
+    .jugadorFinal {
+        border-radius: 25px;
+    }
+
+    .jugadorFinal p {
+        margin-top: 10%;
+    }
+
+    .pure-material-button-contained {
+        font-size: 18px;
+        height: 40px;
+    }
+}

@@ -1,3 +1,4 @@
+
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -103,7 +104,7 @@ export class SeleccionJugadoresComponent {
     console.log(that);
 
     this.pruebaService.numeroJugadores.forEach(function (item: any) {
-      if (item.nombreJugador == "") {
+      if (item.nombreJugador.trim() == "") {
         that.showError = true;
       }
       // console.log(item.nombreJugador);

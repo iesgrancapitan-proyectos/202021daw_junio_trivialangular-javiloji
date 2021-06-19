@@ -1,15 +1,18 @@
+
 <!-- {{speak(preguntas[0].pregunta)}} -->
 <!-- <div *ngFor="let pregunta of preguntas"> 
     <p>{{pregunta.pregunta}}</p>
 </div> -->
 
 <!-- Form que muestra el Quiz -->
+<div class="comenzarPartida" *ngIf="!partidaEmpezada">
+    <button (click)="comenzarPartida()" class="pure-material-button-contained">¡Comenzar!</button>
+</div>
 <div class="inactive" *ngIf="!quizCompleted" ngClass="divPrincipal">
     <div class="divJugadores">
         <div class="box goalContainer">
             <p>Puntuación Objetivo: {{numeroRondas}}<span class="material-icons star-icon">
                     stars
-                    <!--viendo esto ahora en frio, no me parece tan intuitivo como me imaginaba cuando se me ocurrió. Ya me dirás que te parece Lopera ;)-->
                 </span></p>
         </div>
         <div class="box" *ngFor="let jugador of arrayJugadores; index as i"
@@ -25,19 +28,19 @@
                 <span class="points">{{jugador.puntosJugador}}</span>
                 <span class="material-icons star-icon starsPuntuacion">
                     stars
-                    <!--viendo esto ahora en frio, no me parece tan intuitivo como me imaginaba cuando se me ocurrió. Ya me dirás que te parece Lopera ;)-->
                 </span>
             </div>
         </div>
     </div>
-    <!-- <iframe width="400" height="400" src="https://www.youtube.com/watch?v=9PrIHFyxQZY"  frameborder="0" allowfullscreen></iframe> -->
+    <!-- <iframe width="400" height="400" src="https://www.youtube.com/watch?v=U2wR7eRYuFQ"  frameborder="0" allowfullscreen></iframe> -->
 
     <div class="divPreguntas">
         <p *ngIf="preguntas[0]">{{ preguntas[0].categoria }}</p>
         <p class="tituloPregunta" *ngIf="preguntas[0]">{{ preguntas[0].pregunta }}</p>
-        <img *ngIf="preguntas[0] && preguntas[0].tipoObjeto == 'Imagen'" src="http://localhost/sabiogc/uploads/imagenes/{{preguntas[0].Objeto}}" class="img-pregunta">
-        <mat-icon class="link-icon"><a *ngIf="preguntas[0] && preguntas[0].tipoObjeto == 'Link'" href="{{preguntas[0].Objeto}}"
-                target="_blank">link</a></mat-icon>
+        <img *ngIf="preguntas[0] && preguntas[0].tipoObjeto == 'Imagen'"
+            src="http://localhost/sabiogc/uploads/imagenes/{{preguntas[0].Objeto}}" class="img-pregunta">
+        <mat-icon class="link-icon"><a *ngIf="preguntas[0] && preguntas[0].tipoObjeto == 'Link'"
+                href="{{preguntas[0].Objeto}}" target="_blank">link</a></mat-icon>
         <br />
         <div class="containerRespuestas">
             <button (click)="elegirRespuesta(respuesta, respuestaUnica,arrayJugadores)" mat-raised-button
@@ -51,29 +54,34 @@
         </div>
         <div class="containerButtonNext">
             <button style="padding: 0 !important;" (click)="avanzar()" mat-fab id="buttonNext" class="buttonNext"
-                [ngClass]="{'buttonNextBlock': respuestaClicada != ''}">Avanzar
-                <span class="material-icons">
+                [ngClass]="{'buttonNextBlock': respuestaClicada != ''}"><span class="avanzarText">Avanzar</span>
+                <span class="material-icons avanzarIcon">
                     arrow_forward_ios
                 </span>
             </button>
         </div>
     </div>
-    <!-- {{ache}} -->
 </div>
-
 
 
 
 <!-- Div que se muestra cuando acaba el Quiz -->
 <div *ngIf="quizCompleted" class="divFinal">
-    <h2 class="tituloPuntuacion">Puntuación Final: </h2>
+    <!-- {{reproducirAudio("aplausos")}} -->
+    <h2 class="tituloPuntuacion">Puntuación Final </h2>
     <div class="jugadorFinal" *ngFor="let jugador of arrayJugadores; index as i"
-        [ngClass]="{'correctAnswer': jugador.turno == true}">
-        <p>Nombre Jugador: {{jugador.nombreJugador}}</p>
-        <p>Puntuación: {{jugador.puntosJugador}}</p>
+        [ngClass]="{'winner': jugador.turno == true}">
+        <p style="font-weight: bold;">{{jugador.nombreJugador}}</p>
+        <div>
+            <span class="points">{{jugador.puntosJugador}}</span>
+            <span class="material-icons star-icon starsPuntuacion">
+                stars
+            </span>
+        </div>
         <img class="iconito" src="{{jugador.iconoJugador}}">
     </div>
     <div class="volverAJugar">
         <a [routerLink]="['/']" style="cursor: pointer;"><button>Volver al menú principal</button></a>
     </div>
 </div>
+

@@ -402,10 +402,6 @@ div p {
     opacity: 0;
 }
 
-.desactivarScroll {
-    overflow-y: hidden !important;
-}
-
 @keyframes changingColor {
     0% {
         background: #fff;

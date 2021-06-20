@@ -22,6 +22,7 @@ div p {
     flex-wrap: wrap;
     align-items: center;
 }
+
 .divJugadores>div:first-child {
     width: 100%;
     border-bottom: 3px solid rgba(0,0,0,0.4);
@@ -52,6 +53,10 @@ div p {
     flex: 30%;
 }
 
+.divJugador {
+    min-width: 50%;
+}
+
 .nombreJugador{
     font-weight: 700;
     padding: 20px;
@@ -76,7 +81,7 @@ div p {
 }
 
 .divPreguntas .mat-icon {
-    height: 100%;
+    height: 35px;
 }
 
 .containerRespuestas {

@@ -245,6 +245,10 @@ div p {
     width: 50% !important;
 }
 
+.nombreJugador{
+    line-height: 30px;
+}
+
 .star-icon {
     vertical-align: text-bottom;
     color: #6C6BE3;

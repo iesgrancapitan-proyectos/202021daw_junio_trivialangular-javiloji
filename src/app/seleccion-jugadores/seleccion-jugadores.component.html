@@ -13,8 +13,8 @@ aria-describedby="basic-addon1"> -->
 <div class="containerElectionPlayers">
     <div>
         <div class="containerPlayers">
-            <label for="players">Número de jugadores</label>
             <div>
+                <label for="players">Número de jugadores: </label>
                 <select [(ngModel)]="selectedOption" (change)="generarJugadores()" name="players" id="players">
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -23,8 +23,8 @@ aria-describedby="basic-addon1"> -->
             </div>
         </div>
         <div class="containerRondas">
-            <label for="rondas">Ganador al mejor de:</label>
             <div>
+            <label for="rondas">Ganador al mejor de: </label>
                 <select [(ngModel)]="numeroRondas" (change)="asignarRondas()" name="rondas" id="rondas">
                     <option value="2">2</option>
                     <option value="3">3</option>

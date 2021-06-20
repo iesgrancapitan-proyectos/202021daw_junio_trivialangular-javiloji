@@ -1,5 +1,5 @@
 
-import { Component, ViewChild, ElementRef, AfterViewInit, OnInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterViewInit, OnInit, OnDestroy, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { SeleccionJugadoresComponent } from './../seleccion-jugadores/seleccion-jugadores.component';
@@ -38,14 +38,14 @@ export class PreguntasComponent implements OnInit, AfterViewInit {
   preguntaAlmacenada = "";
   // ache = "";
 
-  constructor(private route: ActivatedRoute, private http: HttpClient, private seleccion: SeleccionJugadoresComponent, private pruebaService: PruebaService) {
+  constructor(private route: ActivatedRoute, private http: HttpClient, private seleccion: SeleccionJugadoresComponent, private pruebaService: PruebaService, private renderer: Renderer2) {
     this.asignarJugadores();
     this.numeroRondas = pruebaService.numeroRondas;
     console.log(this.preguntas);
-    // console.log(pruebaService.numeroJugadores);
-    // console.log(seleccion.numeroJugadores.value);
-    // this.ache = seleccion.numeroJugadores;
     this.primerTurno(this.arrayJugadores);
+
+    /** Renderer2 */
+    this.renderer.addClass(document.body, 'desactivarScroll');
 
     /** Voices */
     this.voices = [];
@@ -344,12 +344,13 @@ export class PreguntasComponent implements OnInit, AfterViewInit {
       setTimeout(function () {
         audio.pause();
         audio.currentTime = 0;
-      }, 7000);
+      }, 4000);
     }, 0);
   }
 
   public comenzarPartida() {
     this.partidaEmpezada = true;
+    this.renderer.removeClass(document.body, 'desactivarScroll');
     this.speak(this.preguntaAlmacenada);
   }
 

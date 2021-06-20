@@ -10,8 +10,11 @@ body{
 
 body *{
     font-family: 'Montserrat' !important;
-
 }
 html, body { height: 100%; }
 
 html, body { height: 100%; }
+
+.desactivarScroll {
+    overflow-y: hidden !important;
+}

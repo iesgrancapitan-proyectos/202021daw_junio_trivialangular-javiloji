@@ -71,6 +71,7 @@
     <h2 class="tituloPuntuacion">Puntuación Final </h2>
     <div class="jugadorFinal" *ngFor="let jugador of arrayJugadores; index as i"
         [ngClass]="{'winner': jugador.turno == true}">
+        <img class="iconito" src="{{jugador.iconoJugador}}">
         <p style="font-weight: bold;">{{jugador.nombreJugador}}</p>
         <div>
             <span class="points">{{jugador.puntosJugador}}</span>
@@ -78,7 +79,6 @@
                 stars
             </span>
         </div>
-        <img class="iconito" src="{{jugador.iconoJugador}}">
     </div>
     <div class="volverAJugar">
         <a [routerLink]="['/']" style="cursor: pointer;"><button>Volver al menú principal</button></a>
